@@ -16,7 +16,7 @@ function UsersPage() {
       //Data update
       // staleTime: 4000,
 
-      //not fetched
+      //not fetched - if fixed data
       // refetchOnMount: false,
 
       // Move between pages
