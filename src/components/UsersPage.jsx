@@ -25,7 +25,7 @@ function UsersPage() {
       //the moment
       // refetchInterval: 2000,
 
-      //click
+      //click - refetch
       enabled: false,
 
       onSuccess: (success) => console.log("Success :", success),
