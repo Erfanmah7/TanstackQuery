@@ -1,14 +1,10 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
+import { useAddPost } from "../hooks/mutations";
 
 function Form() {
-  // mutate(data);
-  const addPost = (data) => {
-    return axios.post("https://jsonplaceholder.typicode.com/posts", data);
-  };
-
-  const { mutate, data, isLoading } = useMutation(addPost);
+  const { mutate, data, isLoading } = useAddPost();
 
   console.log({ mutate, data, isLoading });
   const sendHandler = () => {
