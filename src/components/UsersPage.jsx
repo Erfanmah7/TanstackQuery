@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
+import { Link } from "react-router-dom";
 
 function UsersPage() {
   const fetchData = () =>
@@ -13,7 +14,7 @@ function UsersPage() {
       //save
       // cacheTime: 5000,
 
-      //Data update
+      //Data update - if back and forth
       // staleTime: 4000,
 
       //not fetched - if fixed data
@@ -42,7 +43,9 @@ function UsersPage() {
       <button onClick={refetch}>Fetch</button>
       {isLoading && isFetching && <h3>Loading...</h3>}
       {data?.data.map((i) => (
-        <h3 key={i.id}>{i.name}</h3>
+        <Link key={i.id} to={`/users/${i.id}`}>
+          <h3>{i.name}</h3>
+        </Link>
       ))}
     </div>
   );
