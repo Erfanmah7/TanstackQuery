@@ -6,15 +6,42 @@ function UsersPage() {
   const fetchData = () =>
     axios.get("https://jsonplaceholder.typicode.com/users");
 
-  const { data, error, isError, isLoading } = useQuery(["users"], fetchData);
+  const { data, error, isError, isLoading, isFetching, refetch } = useQuery(
+    ["users"],
+    fetchData,
+    {
+      //save
+      // cacheTime: 5000,
 
-  if (isLoading) return <h3>Loading...</h3>;
+      //Data update
+      // staleTime: 4000,
+
+      //not fetched
+      // refetchOnMount: false,
+
+      // Move between pages
+      // refetchOnWindowFocus: false,
+
+      //the moment
+      // refetchInterval: 2000,
+
+      //click
+      enabled: false,
+
+      onSuccess: (success) => console.log("Success :", success),
+      onError: (error) => console.log("Error :", error),
+    }
+  );
+
+  // if (isLoading) return <h3>Loading...</h3>;
   if (isError) return <h3>Error : {error.message}</h3>;
-  console.log({ data, error, isError, isLoading });
+  console.log({ data, error, isError, isLoading, isFetching });
 
   return (
     <div>
-      {data.data.map((i) => (
+      <button onClick={refetch}>Fetch</button>
+      {isLoading && isFetching && <h3>Loading...</h3>}
+      {data?.data.map((i) => (
         <h3 key={i.id}>{i.name}</h3>
       ))}
     </div>
