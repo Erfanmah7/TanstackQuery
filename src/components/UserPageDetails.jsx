@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useUsersDetailsData } from "./hooks/queries";
+import { useUsersDetailsData } from "../hooks/queries";
 
 function UserPageDetails() {
   const { id } = useParams();

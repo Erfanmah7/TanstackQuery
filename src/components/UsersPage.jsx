@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useUsersData } from "./hooks/queries";
+import { useUsersData } from "../hooks/queries";
 
 function UsersPage() {
   const { data, error, isError, isLoading, isFetching, refetch } =
