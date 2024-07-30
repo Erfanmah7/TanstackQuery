@@ -6,11 +6,11 @@ import { useParams } from "react-router-dom";
 function UserPageDetails() {
   const { id } = useParams();
 
-  const fetchDataDetails = () =>
-    axios.get(`https://jsonplaceholder.typicode.com/users/${id}`);
+  const fetchDataDetails = ({ queryKey }) =>
+    axios.get(`https://jsonplaceholder.typicode.com/users/${queryKey[1]}`);
 
   const { data, error, isError, isLoading, isFetching, refetch } = useQuery(
-    ["users"],
+    ["users", id],
     fetchDataDetails,
     {
       refetchOnWindowFocus: false,
